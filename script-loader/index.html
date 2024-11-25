@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Script Loader</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+      }
+      input {
+        width: 300px;
+        padding: 8px;
+      }
+      button {
+        padding: 8px 16px;
+        margin-left: 10px;
+      }
+      #container {
+        height: 500px;
+        width: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Script Loader</h1>
+    <div>
+      <input type="text" id="scriptUrl" placeholder="Enter script URL" />
+      <button onclick="loadScript()">Load Script</button>
+    </div>
+    <div id="container"></div>
+
+    <script>
+      function loadScript() {
+        const url = document.getElementById("scriptUrl").value;
+        if (!url) {
+          alert("Please enter a script URL");
+          return;
+        }
+
+        const script = document.createElement("script");
+        script.src = url;
+        script.onerror = () => alert("Error loading script");
+        document.body.appendChild(script);
+      }
+    </script>
+  </body>
+</html>
